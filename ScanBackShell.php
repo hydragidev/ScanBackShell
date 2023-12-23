@@ -21,7 +21,7 @@ $directory = $argv[1];
 
 // Memeriksa apakah direktori yang diberikan ada
 if (!is_dir($directory)) {
-    echo "Error: Direktory not found.\n";
+    echo "Error: The specified directory does not exist.\n";
     exit(1);
 }
 

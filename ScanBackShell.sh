@@ -25,7 +25,7 @@ DIRECTORY=$1
 
 # Memeriksa apakah direktori yang diberikan ada
 if [ ! -d "$DIRECTORY" ]; then
-  echo "Error: Direktory not found."
+  echo "Error: The specified directory does not exist."
   exit 1
 fi
 
