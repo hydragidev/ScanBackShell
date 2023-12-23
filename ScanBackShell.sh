@@ -16,7 +16,7 @@ echo -e "${PURPLE} ${NC}"
 
 # Memeriksa apakah argumen telah diberikan
 if [ $# -eq 0 ]; then
-  echo "Penggunaan: $0 <direktori>"
+  echo "Usage: $0 <directory>"
   exit 1
 fi
 
@@ -25,7 +25,7 @@ DIRECTORY=$1
 
 # Memeriksa apakah direktori yang diberikan ada
 if [ ! -d "$DIRECTORY" ]; then
-  echo "Error: Direktori yang ditentukan tidak ada."
+  echo "Error: Direktory not found."
   exit 1
 fi
 
@@ -46,7 +46,7 @@ RED='\033[0;31m'
 NC='\033[0m' # Tanpa Warna
 
 # Menampilkan pesan pemindaian dalam warna kuning
-echo -e "${YELLOW}[Memindai potensi backdoor shell di $DIRECTORY...]${NC}"
+echo -e "${YELLOW}[Scanning potential backdoor shell in $DIRECTORY...]${NC}"
 
 # Loop melalui setiap ekstensi
 for EXT in "${EXTENSIONS[@]}"
@@ -70,8 +70,8 @@ done
 if [ $POTENTIAL_SHELL_BACKDOOR_FOUND -eq 0 ]
 then
   # Jika tidak ada potensi backdoor shell, tampilkan pesan dalam warna hijau
-  echo -e "${GREEN}[Tidak Ditemukan Potensi Backdoor Shell!]${NC}"
+  echo -e "${GREEN}[Not Found Potential Backdoor Shell!]${NC}"
 else
   # Jika potensi backdoor shell ada, tampilkan pesan dalam warna merah
-  echo -e "${GREEN}[Pemindaian Selesai]${NC}"
+  echo -e "${GREEN}[Scanning Complete]${NC}"
 fi
