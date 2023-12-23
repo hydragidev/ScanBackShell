@@ -1,6 +1,6 @@
 ## ScanBackShell v1.0
 
-ScanBackShell adalah sebuah skrip bash sederhana yang dirancang untuk memindai direktori tertentu dan mencari potensi backdoor shell dalam berbagai jenis file. Skrip ini menggunakan daftar ekstensi file dan kata kunci yang umumnya terkait dengan backdoor atau serangan keamanan pada aplikasi web.
+ScanBackShell (Scanner Backdoor Shell)  adalah sebuah skrip bash sederhana yang dirancang untuk memindai direktori tertentu dan mencari potensi backdoor shell dalam berbagai jenis file. Skrip ini menggunakan daftar ekstensi file dan kata kunci yang umumnya terkait dengan backdoor atau serangan keamanan pada aplikasi web.
 ### Penggunaan
 ```bash
 chmod +x ScanBackShell.sh
