@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Display banner
+# Menampilkan banner
 PURPLE='\033[0;35m'
-NC='\033[0m' # No Color
+NC='\033[0m' # Tanpa Warna
 echo -e "${PURPLE}# ScanBackShell v1.0${NC}"
 echo -e "${PURPLE} ${NC}"
 echo -e "${PURPLE} .|'''.|                           '||''|.                   '||       .|'''.|  '||              '||  '||  ${NC}"
@@ -14,51 +14,51 @@ echo -e "${PURPLE} ${NC}"
 
                                                            
 
-# Check if an argument is provided
+# Memeriksa apakah argumen telah diberikan
 if [ $# -eq 0 ]; then
-  echo "Usage: $0 <directory>"
+  echo "Penggunaan: $0 <direktori>"
   exit 1
 fi
 
-# Directory to scan
+# Direktori yang akan dipindai
 DIRECTORY=$1
 
-# Check if the provided directory exists
+# Memeriksa apakah direktori yang diberikan ada
 if [ ! -d "$DIRECTORY" ]; then
-  echo "Error: The specified directory does not exist."
+  echo "Error: Direktori yang ditentukan tidak ada."
   exit 1
 fi
 
-# List of extensions to scan
+# Daftar ekstensi yang akan dipindai
 EXTENSIONS=("php" "php3" "php4" "php5" "phtml" "asp" "go")
 
-# List of keywords to search for
-# Added 'system', 'passthru', 'proc_open', 'popen', 'pcntl_exec', 'eval', 'create_function', 'assert', 'include', 'require', 'fopen', 'fwrite', 'file_put_contents'
+# Daftar kata kunci yang akan dicari
+# Ditambahkan 'system', 'passthru', 'proc_open', 'popen', 'pcntl_exec', 'eval', 'create_function', 'assert', 'include', 'require', 'fopen', 'fwrite', 'file_put_contents'
 KEYWORDS=("backdoor" "shell" "cmd" "exec" "system" "passthru" "proc_open" "popen" "pcntl_exec" "eval" "create_function" "assert" "include" "require" "fopen" "fwrite" "file_put_contents")
 
-# Variable to check if potential shell backdoor exists
+# Variabel untuk memeriksa apakah potensi backdoor shell ada
 POTENTIAL_SHELL_BACKDOOR_FOUND=0
 
-# Variable for color codes
+# Variabel untuk kode warna
 YELLOW='\033[1;33m'
 GREEN='\033[0;32m'
 RED='\033[0;31m'
-NC='\033[0m' # No Color
+NC='\033[0m' # Tanpa Warna
 
-# Display scanning message in yellow
-echo -e "${YELLOW}[Scanning for potential shell backdoors in $DIRECTORY...]${NC}"
+# Menampilkan pesan pemindaian dalam warna kuning
+echo -e "${YELLOW}[Memindai potensi backdoor shell di $DIRECTORY...]${NC}"
 
-# Loop through each extension
+# Loop melalui setiap ekstensi
 for EXT in "${EXTENSIONS[@]}"
 do
-  # Loop through each keyword
+  # Loop melalui setiap kata kunci
   for KEY in "${KEYWORDS[@]}"
   do
-    # Find files that match the extension and contain the keyword
+    # Menemukan file yang cocok dengan ekstensi dan mengandung kata kunci
     sudo find $DIRECTORY -type f -name "*.$EXT" -exec grep -q $KEY {} \; -quit
     if [ $? -eq 0 ]
     then
-      # If a file is found, add a tag [Backdoor] to the file name and display it in red
+      # Jika file ditemukan, tambahkan tag [Backdoor] ke nama file dan tampilkan dalam warna merah
       sudo find $DIRECTORY -type f -name "*.$EXT" -exec sh -c 'echo "\e[0;31m[Backdoor]\e[0m " $0' {} \;
       POTENTIAL_SHELL_BACKDOOR_FOUND=1
       break
@@ -66,12 +66,12 @@ do
   done
 done
 
-# Check if potential shell backdoor exists
+# Memeriksa apakah potensi backdoor shell ada
 if [ $POTENTIAL_SHELL_BACKDOOR_FOUND -eq 0 ]
 then
-  # If no potential shell backdoor exists, display message in green
-  echo -e "${GREEN}[Not Found Potential Shell Backdoor Existing!]${NC}"
+  # Jika tidak ada potensi backdoor shell, tampilkan pesan dalam warna hijau
+  echo -e "${GREEN}[Tidak Ditemukan Potensi Backdoor Shell!]${NC}"
 else
-  # If potential shell backdoor exists, display message in red
-  echo -e "${GREEN}[Scanning Complete]${NC}"
+  # Jika potensi backdoor shell ada, tampilkan pesan dalam warna merah
+  echo -e "${GREEN}[Pemindaian Selesai]${NC}"
 fi
