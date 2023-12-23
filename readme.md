@@ -44,7 +44,3 @@ chmod +x ScanBackShell.sh
 
 - Jika tidak ditemukan potensi backdoor, pesan "Not Found Potential Shell Backdoor Existing!" akan ditampilkan dalam warna hijau.
 - Jika potensi backdoor ditemukan, skrip akan menandai file dengan tag [Backdoor] dan menampilkan nama file dalam warna merah. Pesan "Scanning Complete" akan ditampilkan dalam warna merah.
-
-### Kontributor
-
-    mindara09
